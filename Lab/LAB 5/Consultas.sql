@@ -43,6 +43,11 @@ SELECT country
 From economy
 WHERE (service + industry)>=70;
 
+SELECT code
+FROM Country
+WHERE code IN (SELECT country
+               FROM Economy
+               WHERE  (service +industry)>=70)
                
                
 ;-- PRUEBA: Se verifica los paises con servicios o industria con al menos 70%  
