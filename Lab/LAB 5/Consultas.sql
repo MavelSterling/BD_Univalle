@@ -37,8 +37,34 @@ ORDER BY population DESC;
 
 ;-- Ejercicio 4.a) el PIB está compuesto al menos en un 70%
 ;-- por los sectores de Servicios e Industria juntos
+     
+;-- (b) la inflación es inferior al 2%.
+        
+SELECT code
+FROM Country
+WHERE code IN (SELECT country
+               FROM Economy
+               WHERE  inflation < 2 );
+;-- Realizando la consulta con las dos condiciones 4a y 4b
+
+;-- Para obtener el codigo de los paises
+SELECT code
+FROM Country
+WHERE code IN (SELECT country
+               FROM Economy
+               WHERE  (service +industry)>=70 or inflation < 2 );
+
+;-- Para obtener el nombre de los paises
+SELECT Country.name
+FROM Country INNER JOIN Economy ON Country.code = Economy.country
+WHERE (economy.service +economy.industry)>=70 or economy.inflation < 2 ;
+
+;--------------------------------------------------------------------
 
 
+;-- PRUEBAS:
+
+;-- Para obtener el codigo de los paises:
 SELECT country
 From economy
 WHERE (service + industry)>=70;
@@ -60,11 +86,5 @@ FROM Country
 WHERE code IN (SELECT country
                FROM Economy
                WHERE  industry>=70 or service >= 70 );
-     
-;-- (b) la inflación es inferior al 2%.
-        
-SELECT code
-FROM Country
-WHERE code IN (SELECT country
-               FROM Economy
-               WHERE  inflation < 2 );
+
+
