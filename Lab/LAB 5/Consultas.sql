@@ -6,7 +6,7 @@ SELECT Country.name, COUNT(*)
 FROM Country, geo_river
 WHERE Country.code = geo_river.country
 GROUP BY Country.name
-HAVING COUNT(*) >= 15;
+HAVING COUNT(*) > 15;
 
 ;-- Ejercicio 2. Obtenga el nombre de los países que 
 ;-- pertenecen o son miembros de la UNESCO o de UNASUR.
