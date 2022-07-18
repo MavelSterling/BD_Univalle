@@ -40,11 +40,6 @@ ORDER BY population DESC;
      
 ;-- (b) la inflación es inferior al 2%.
         
-SELECT code
-FROM Country
-WHERE code IN (SELECT country
-               FROM Economy
-               WHERE  inflation < 2 );
 ;-- Realizando la consulta con las dos condiciones 4a y 4b
 
 ;-- Para obtener el codigo de los paises
@@ -87,4 +82,11 @@ WHERE code IN (SELECT country
                FROM Economy
                WHERE  industry>=70 or service >= 70 );
 
+;-- PRUEBA: Para obtener el codigo de los paises con inflación inferior a 2
+
+SELECT code
+FROM Country
+WHERE code IN (SELECT country
+               FROM Economy
+               WHERE  inflation < 2 );
 
